@@ -1,0 +1,52 @@
+image:
+  repository: podcast-content-agent
+  tag: latest
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+
+serviceAccount:
+  create: true
+  name: ""
+  annotations: {}
+
+podAnnotations: {}
+podLabels: {}
+
+input:
+  file: /app/input/ep001_remote_work.json
+
+output:
+  directory: /app/output
+
+model:
+  provider: anthropic
+  name: claude-haiku-4-5
+
+secret:
+  existingSecret: podcast-content-agent-secrets
+  anthropicKey: ANTHROPIC_API_KEY
+  braveSearchKey: BRAVE_SEARCH_API_KEY
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+podSecurityContext:
+  runAsNonRoot: true
+  seccompProfile:
+    type: RuntimeDefault
+
+containerSecurityContext:
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+      - ALL
+
+restartPolicy: Never
+
+backoffLimit: 2
