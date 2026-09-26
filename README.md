@@ -178,8 +178,7 @@ podcast-content-agent/
 ├── docs/
 │   ├── architecture.md
 │   ├── decisions.md
-│   ├── deployment-strategy.md
-│   └── diagrams/
+│   └── production-architecture.md
 ├── Dockerfile
 ├── requirements.txt
 ├── pytest.ini
@@ -444,7 +443,7 @@ The proposed production architecture uses AWS and Kubernetes, with:
 
 The production architecture is a design proposal and is intentionally separate from the locally implemented take-home application.
 
-See [`docs/deployment-strategy.md`](docs/deployment-strategy.md) for the infrastructure diagram, deployment lifecycle, scaling model, fault handling, security controls, cost considerations, and non-functional requirements.
+See [`docs/production-architecture.md`](docs/production-architecture.md) for the infrastructure diagram, deployment lifecycle, scaling model, fault handling, security controls, cost considerations, and non-functional requirements.
 
 ## Current Limitations
 
