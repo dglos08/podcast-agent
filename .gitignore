@@ -5,3 +5,8 @@ __pycache__/
 .pytest_cache/
 output/*
 !output/.gitkeep
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+.terraform.tfstate.lock.info
