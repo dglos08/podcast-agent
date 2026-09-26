@@ -12,7 +12,7 @@ permissions:
 jobs:
   test:
     name: Python Tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout repository
@@ -32,7 +32,7 @@ jobs:
 
   container:
     name: Container Build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout repository
@@ -43,7 +43,7 @@ jobs:
 
   helm:
     name: Helm Validation
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout repository
@@ -60,3 +60,45 @@ jobs:
           helm template test deploy/helm/podcast-content-agent \
             --set image.tag=${{ github.sha }} \
             > /tmp/podcast-content-agent.yaml
+  
+  dependency-scan:
+    name: Dependency Scan
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Install dependencies and pip-audit
+        run: |
+          pip install -r requirements.txt
+          pip install pip-audit
+
+      - name: Audit Python dependencies
+        run: pip-audit -r requirements.txt
+
+  container-scan:
+    name: Container Scan
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build container
+        run: docker build -t podcast-content-agent:scan .
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          image-ref: podcast-content-agent:scan
+          format: table
+          severity: HIGH,CRITICAL
+          ignore-unfixed: true
+          exit-code: "1"
