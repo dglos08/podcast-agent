@@ -156,33 +156,58 @@ The model and search integrations are behind provider interfaces so the applicat
 ## Repository Structure
 
 ```text
-podcast-content-agent/
-├── src/
-│   └── podcast_agent/
-│       ├── agent.py
-│       ├── config.py
-│       ├── main.py
-│       ├── models.py
-│       ├── providers/
-│       │   ├── base.py
-│       │   └── anthropic.py
-│       ├── tools/
-│       │   └── search.py
-│       └── verification/
-│           └── verifier.py
-├── input/
-├── output/
-├── tests/
-├── scripts/
-│   └── run-all.sh
+podcast-agent/
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+├── deploy/
+│   └── helm/
+│       └── podcast-content-agent/
 ├── docs/
 │   ├── architecture.md
 │   ├── decisions.md
 │   └── production-architecture.md
+├── examples/
+│   ├── ep001.json
+│   ├── ep002.json
+│   └── ep003.json
+├── infra/
+│   └── terraform/
+│       ├── README.md
+│       ├── main.tf
+│       ├── outputs.tf
+│       ├── variables.tf
+│       └── versions.tf
+├── input/
+│   ├── ep001_remote_work.json
+│   ├── ep002_ai_healthcare.json
+│   └── ep003_bootstrapping.json
+├── scripts/
+│   └── run-all.sh
+├── src/
+│   └── podcast_agent/
+│       ├── providers/
+│       ├── tools/
+│       ├── verification/
+│       ├── agent.py
+│       ├── config.py
+│       ├── main.py
+│       └── models.py
+├── tests/
+│   ├── test_agent.py
+│   ├── test_models.py
+│   └── test_verifier.py
+├── .env.example
 ├── Dockerfile
-├── requirements.txt
 ├── pytest.ini
-└── README.md
+├── requirements-dev.txt
+└── requirements.txt
+
+The core agent implementation lives under `src/podcast_agent/`. Generated
+sample results are available under `examples/`. The current Kubernetes
+packaging is under `deploy/helm/`, while `infra/terraform/` contains the
+deliberately scoped AWS reference infrastructure. The complete proposed
+production deployment is documented in `docs/production-architecture.md`.
 ```
 
 ## Configuration
