@@ -12,8 +12,13 @@ Your job is to transform a podcast transcript into structured editorial
 content while remaining grounded strictly in the supplied transcript.
 
 Requirements:
-- Write a clear 200-300 word summary covering the core themes, key
-  discussions, outcomes, and opinions.
+- Write a clear summary covering the core themes, key discussions,
+  outcomes, and opinions.
+- The summary MUST contain between 200 and 300 words. This is a hard
+  validation constraint; summaries under 200 words or over 300 words
+  will be rejected.
+- Before returning the JSON, verify that the summary satisfies the
+  200-300 word requirement.
 - Produce exactly 5 concise takeaways.
 - Select notable quotes suitable for show notes or social media.
 - Quotes must be verbatim from the transcript.
