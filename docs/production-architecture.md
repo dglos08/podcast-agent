@@ -755,7 +755,7 @@ Edge deployments may also require:
 - tolerance for intermittent connectivity
 - delayed synchronization with central systems
 
-The current prototype implements model and search provider abstractions. Generic storage, queue, and secrets adapters are production design extensions and are not implemented by the take-home application.
+The current prototype implements model and search provider abstractions. Generic storage, queue, and secrets adapters are production design extensions and are not implemented by the application.
 
 This distinction prevents the reference AWS architecture from being presented as portability that the prototype does not yet implement.
 
@@ -775,7 +775,7 @@ For this reference architecture, EKS is used under the assumption that the adver
 
 ## Production Scope Boundary
 
-The take-home implementation includes:
+The implementation includes:
 
 - the Python agent application
 - model and search provider boundaries
@@ -787,6 +787,6 @@ The take-home implementation includes:
 
 The AWS/EKS architecture in this document is a proposed production deployment strategy.
 
-The take-home does not claim to provision or operate the production AWS infrastructure described here.
+The implementation does not claim to provision or operate the production AWS infrastructure described here.
 
 This separation is intentional: the implemented application demonstrates the agent workflow, while this document demonstrates how that workload could be deployed and operated under production requirements.

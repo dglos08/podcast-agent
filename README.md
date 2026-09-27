@@ -466,7 +466,7 @@ The proposed production architecture uses AWS and Kubernetes, with:
 - CI/CD with workload identity rather than static AWS credentials
 - centralized metrics, logs, traces, and alerting
 
-The production architecture is a design proposal and is intentionally separate from the locally implemented take-home application.
+The production architecture is a design proposal and is intentionally separate from the locally implemented application.
 
 See [`docs/production-architecture.md`](docs/production-architecture.md) for the infrastructure diagram, deployment lifecycle, scaling model, fault handling, security controls, cost considerations, and non-functional requirements.
 
@@ -481,7 +481,7 @@ Current limitations include:
 - The prototype does not maintain a persistent retrieval knowledge base.
 - Search-source authority is encouraged through search planning but is not enforced through a formal source-ranking system.
 - Model and search-provider failures do not yet include the full retry, circuit-breaking, and fallback behavior proposed for production.
-- Production AWS/EKS infrastructure is designed but not provisioned as part of this take-home.
+- Production AWS/EKS infrastructure is designed but not provisioned as part of this implementation.
 - There is no end-user UI; the application is intentionally exposed as a CLI/container workflow.
 
 These are explicit prototype boundaries rather than assumptions about production readiness.
