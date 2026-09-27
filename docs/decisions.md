@@ -2,7 +2,7 @@
 
 This document records the major design decisions made for the Podcast Content Agent and the tradeoffs behind them.
 
-These decisions apply to the take-home implementation unless explicitly identified as production considerations.
+These decisions apply to the implementation unless explicitly identified as production considerations.
 
 ## ADR-001: Use Python for the Application
 
