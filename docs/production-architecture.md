@@ -2,7 +2,7 @@
 
 ## Overview
 
-The take-home implementation is a locally runnable, containerized agentic application. This document describes how that application could be deployed and operated as a production service for an advertising agency.
+The implementation is a locally runnable, containerized agentic application. This document describes how that application could be deployed and operated as a production service for an advertising agency.
 
 The reference architecture uses AWS and Amazon EKS. It is designed around several workload characteristics:
 
